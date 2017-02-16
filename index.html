@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="node_modules/shower-material/styles/screen-16x10.css">
 	<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700" rel="stylesheet">
+	<link rel="shortcut icon" href="pictures/djangopony.png" type="image/x-icon">
+	<link rel="icon" href="pictures/djangopony.png" type="image/x-icon">
 	<style>
 		body {
 			background: #0C4B33 !important;
@@ -14,6 +16,8 @@
 		}
 		.caption {
 			background: transparent;
+			display: flex !important;
+			align-items: center;
 		}
 		.caption h1 {
 			font-family: 'Droid Serif', serif;
@@ -33,8 +37,11 @@
 <body class="shower list">
 
 	<header class="caption">
-		<h1>Django on Steroids</h1>
-		<p>Sanket Saurav, Co-founder, DoSelect Inc.</p>
+		<img src="pictures/djangopony.png" alt="Pony" style="width: 130px; margin-right: 20px;">
+		<div>
+			<h1>Django on Steroids</h1>
+			<p>Sanket Saurav, Co-founder, DoSelect Inc.</p>
+		</div>
 	</header>
 
 	<section class="slide" id="cover">
@@ -72,17 +79,107 @@
 	</section>
 
 	<section class="slide">
-		<h2>About Sanket</h2>
+		<h2>self.__doc__</h2>
 		<ul>
+			<li>Sanket Saurav. Chief of Geeks at <a href="https://doselect.com">DoSelect</a>.</li>
 			<li>50% developer, 50% designer.</li>
-			<li>Dabble with Python, Go and JavaScript. Eat all kinds of bugs for breakfast.</li>
-			<li>Most recently: Co-founder and Chief of Geeks at <a href="https://doselect.com">DoSelect</a>.</li>
+			<li>Dabble with Python, Go and JavaScript. Eat bugs for breakfast.</li>
 			<li>Prefer spaces over tabs.</li>
+			<li>Twitter: <a href="https://twitter.com/sanketsaurav">@sanketsaurav</a></li>
 		</ul>
 	</section>
 
 	<section class="slide">
-		<h2>Agenda of talk</h2>
+		<h2>What's this talk about?</h2>
+		<ul>
+			<li>My learnings from running Python and Django for a complex production application.</li>
+			<li>Obvious and non-obvious things to do while scaling.</li>
+			<li>Getting a grip while the application's complexity increases.</li>
+			<li>How not to lose your mind while doing all of this.</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Reasons to choose Django</h2>
+		<ul>
+			<li>Pace of development is pretty fast.</li>
+			<li><em>Common sense</em> design patterns. Helps keep large codebases manageable.</li>
+			<li>Opinionated and comes with batteries. But easy to break out of the box when needed.</li>
+			<li>Great community support. Has been mainstream long enough to be mature.</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">Frameworks don't scale. Applications do.</h2>
+	</section>
+
+	<section class="slide">
+		<h2>WSGI server configuration</h2>
+		<ul>
+			<li>Use Gunicorn + NGINX. Very light, easily configurable, performant, battle-tested.</li>
+			<li>Introspect your application to understand the nature of hosts you need.</li>
+			<li>Go beyond the basic conf.</li>
+			<ul>
+				<li>Determine <code>worker_class</code>.</li>
+				<li>Adjust params like <code>workers</code>, <code>worker_connections</code>, <code>keepalive</code>, etc. wisely.</li>
+			</ul>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Caching</h2>
+		<ul>
+			<li>Cache All That You Can But No More<sup>TM</sup></li>
+			<li>Use Redis as your primary cache. Cache very often: </li>
+			<ul>
+				<li>All user sessions.</li>
+				<li><code>User</code> model lookups.</li>
+				<li>Resource-level caching.</li>
+			</ul>
+			<li>Use a CDN for all things the <em>user cannot change</em>.</li>
+			<ul>
+				<li>Static files, images, etc.</li>
+				<li>HTML templates, if possible.</li>
+			</ul>
+			<li>Varnish.</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Django ORM</h2>
+		<ul>
+			<li>It's awesome.</li>
+			<li>It's not <em>always</em> the silver bullet. Break away when you need to.</li>
+			<ul>
+				<li>Tail database logs to see what your ORM queries actually mean.</li>
+				<li>Automatic relationship access can bite you. Expand relationships carefully.</li>
+				<li>Add extra indices where needed.</li>
+			</ul>
+			<li>Offload heavy-lifting on the database <span style="text-decoration: line-through;">whenever possible</span> <em>all the time</em>.</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Django ORM (contd.)</h2>
+		<script src="https://gist.github.com/sanketsaurav/f8b2f892459c16c6a16e9794a42b48a3.js"></script>
+	</section>
+
+	<section class="slide">
+		<h2>Django ORM (contd.)</h2>
+		<ul>
+			<li>Understand how querysets work.</li>
+			<li>If your're serving an API, tune your resources for list and detail views.</li>
+			<li><em>Dehydrate</em> finite data.</li>
+			<li><em>Denormalize</em> infinite data.</li>
+			<li>Know when to switch to a full-fledged search engine, like Elasticsearch.</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Async all the things!</h2>
+		<ul>
+			<li></li>
+		</ul>
 	</section>
 
 	<section class="slide">
