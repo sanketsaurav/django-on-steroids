@@ -28,9 +28,34 @@
 			font-weight: 900;
 			color: #0C4B33;
 		}
+		.slide {
+			padding: 72px 112px 0 96px;
+		}
 		.cover {
 					filter: brightness(30%);
 			-webkit-filter: brightness(30%);
+		}
+		.slide::after {
+			display: none;
+		}
+
+		.slide .shout {
+			font-size: 80px;
+			padding-left: 48px;
+			line-height: 1.6;
+			letter-spacing: 0.06rem;
+			color: #0C4B33;
+		}
+		.slide .shout::after {
+			background: #fff;
+		}
+
+		.gist .blob-code-inner {
+			background: transparent !important;
+		}
+
+		.gist .blob-num {
+			background: transparent !important;
 		}
 	</style>
 </head>
