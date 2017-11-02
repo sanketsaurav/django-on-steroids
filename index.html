@@ -11,11 +11,11 @@
 	<link rel="icon" href="pictures/djangopony.png" type="image/x-icon">
 	<style>
 		body {
-			background: #0C4B33 !important;
+			background: #101130 !important;
 			font-family: 'Droid Serif', serif !important;
 		}
 		.progress {
-			background: #0C4B33;
+			background: #101130;
 		}
 		.caption {
 			background: transparent;
@@ -25,6 +25,9 @@
 		.caption h1 {
 			font-family: 'Droid Serif', serif;
 			font-weight: 700;
+		}
+		.caption p {
+			color: #2ecc71;
 		}
 		.slide h2 {
 			font-family: 'Droid Serif', serif;
@@ -50,9 +53,13 @@
 			display: none;
 		}
 
+		.slide a {
+			background: none;
+		}
+
 		.slide .shout {
 			font-size: 80px;
-			padding-left: 48px;
+			padding: 0 48px;
 			line-height: 1.6;
 			letter-spacing: 0.06rem;
 			color: #0C4B33;
@@ -85,36 +92,85 @@
 	<section class="slide">
 		<h2>self.__doc__</h2>
 		<ul>
-			<li>Co-founder and CTO at <a href="https://doselect.com" target="_blank">DoSelect</a>, India's #1 tech assessments platform.</li>
-			<li>Speaking Python since 2010. Using Django in production since 2014.</li>
+			<li>Co-founder and CTO at <a href="https://doselect.com" target="_blank">DoSelect</a>.</li>
+			<li>Using Python since 2010, Django in production since 2014.</li>
 			<li>Rant at <a href="https://sanketsaurav.com" target="_blank">sanketsaurav.com</a>.</li>
 			<li>Rant within 140 characters at <a href="https://twitter.com/sanketsaurav" target="_blank">@sanketsaurav</a>.</li>
-			<li>Prefer spaces over tabs. (⌐■_■)</li>
+			<li>Spaces over tabs. Vim over Emacs. (⌐■_■)</li>
 		</ul>
 	</section>
 
 	<section class="slide">
-		<h2>What's this talk about?</h2>
+		<h2>Why do I care?</h2>
 		<ul>
-			<li>My learning from running Python and Django for a complex, heavy traffic production application.</li>
-			<li>Obvious and non-obvious things to do while scaling.</li>
-			<li>Getting a grip while the application's complexity increases.</li>
-			<li>How not to lose your mind while doing all of this.</li>
+			<li>Web services fleet at DoSelect runs primarily on Django.</li>
+			<li>We're currently in the middle of a scaling frenzy.
+				<ul>
+					<li>Increase in engineering team size by 5x</li>
+					<li>Increase in monthly traffic by 30x</li>
+				</ul>
+			</li>
+			<li>I've seen a single project transform into a collection of numerous distributed components.</li>
+			<li>I love Django.</li>
 		</ul>
 	</section>
 
+	<!-- TODO: Slide about warning of strong opinions -->
+
 	<section class="slide">
-		<h2>Reasons to choose Django</h2>
+		<h2>What is <em>web</em> scale?</h2>
 		<ul>
-			<li>Pace of development is pretty fast.</li>
-			<li><em>Common sense</em> design patterns. Helps keep large codebases manageable.</li>
+			<li>Traffic increases exponentially.</li>
+			<li>Fleet architecture and resource consumption grows at far-greater-than-linear rates.</li>
+			<li>Application complexity increases at greater-than-linear rates.</li>
+			<li>Team size increases substantially.</li>
+		</ul>
+	</section>
+
+	<section class="slide hero-image">
+		<img src="pictures/this-is-fine.jpg" alt="This is fine.">
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">
+			Optimize for <em>development velocity</em>.
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">
+			Optimize for <em>reliability</em>.
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">
+			Optimize for <em>developer happiness</em>.
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">
+			Scaling teams is <em>harder</em> than scaling products.
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Why choose Django?</h2>
+		<ul>
+			<li>Django is easy to become productive with.</li>
+			<li><em>Common sense</em> design patterns. Simple, clean, and favors pragmatism.</li>
 			<li>Opinionated and comes with batteries. But easy to break out of the box when needed.</li>
-			<li>Great community support. Has been mainstream long enough to be mature.</li>
+			<li>Great community support. Matured language and framework.</li>
 		</ul>
 	</section>
 
 	<section class="slide">
-		<h2 class="shout shrink">Frameworks don't scale. Applications do.</h2>
+		<h2 class="shout shrink">Frameworks don't scale. <em>Applications</em> do.</h2>
+	</section>
+
+	<section class="slide hero-image">
+		<img src="https://i.imgflip.com/rpvvq.jpg" alt="Let's get shwifty.">
 	</section>
 
 	<section class="slide">
