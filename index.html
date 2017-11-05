@@ -46,7 +46,7 @@
 			max-height: 85%;
 		}
 		#cover {
-			background-image: url(/pictures/cover-image.png);
+			background-image: url(pictures/cover-image.png);
 			background-size: cover;
 		}
 		.slide::after {
@@ -101,21 +101,19 @@
 	</section>
 
 	<section class="slide">
-		<h2>Why do I care?</h2>
+		<h2>Motivation</h2>
 		<ul>
-			<li>Web services fleet at DoSelect runs primarily on Django.</li>
+			<li>DoSelect is primarily built on Python and Django.</li>
 			<li>We're currently in the middle of a scaling frenzy.
 				<ul>
-					<li>Increase in engineering team size by 5x</li>
-					<li>Increase in monthly traffic by 30x</li>
+					<li>Serving millions of unique assessment sessions, several millions of code executions.</li>
+					<li>Grown into a heterogenous stack, all glued together with Python.</li>
+					<li>Scaling up our engineering team at the moment.</li>
 				</ul>
 			</li>
-			<li>I've seen a single project transform into a collection of numerous distributed components.</li>
-			<li>I love Django.</li>
+			<li>We've solved numerous scaling problems in the past 3 years.</li>
 		</ul>
 	</section>
-
-	<!-- TODO: Slide about warning of strong opinions -->
 
 	<section class="slide">
 		<h2>What is <em>web</em> scale?</h2>
@@ -133,13 +131,7 @@
 
 	<section class="slide">
 		<h2 class="shout shrink">
-			Optimize for <em>development velocity</em>.
-		</h2>
-	</section>
-
-	<section class="slide">
-		<h2 class="shout shrink">
-			Optimize for <em>reliability</em>.
+			Optimize for <em>product velocity</em>.
 		</h2>
 	</section>
 
@@ -171,6 +163,77 @@
 
 	<section class="slide hero-image">
 		<img src="https://i.imgflip.com/rpvvq.jpg" alt="Let's get shwifty.">
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">
+			How <em>does</em> the stack scale?
+		</h2>
+	</section>
+
+	<section class="slide hero-image">
+		<img src="pictures/monolith.png" alt="Monolith">
+	</section>
+
+	<section class="slide hero-image">
+		<img src="pictures/monolith-2.png" alt="Monolith">
+	</section>
+
+	<section class="slide hero-image">
+		<img src="pictures/monolith-3.png" alt="Monolith">
+	</section>
+
+	<section class="slide hero-image">
+		<img src="https://pbs.twimg.com/media/CZiq32pUUAA_6pg.jpg" alt="Monolith">
+	</section>
+
+	<section class="slide">
+		<h2>Re-think stack architecture</h2>
+		<ul>
+			<li>Too many <em>apps</em> in one project is not a good idea.</li>
+			<li>Keep your models together.</li>
+			<li>Your most critical business logic should be accessible from <em>outside</em> Django.</li>
+			<li>Optimize for stack heterogeneity.</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">What's your core reliability metric?</h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">Case Study: DoSelect's Async Fleet</h2>
+	</section>
+
+	<section class="slide">
+		<h2>When we began...</h2>
+		<ul>
+			<li>Most of the application logic was a Django monolith.</li>
+			<li>Entire async fleet was on Celery.</li>
+			<li>Python and Django cannot solve all problems. We needed multiple other technologies to solve different problems.
+			e. g. Go, NodeJS, Docker, Kubernetes etc.</li>
+			<li>HTTP-based services were very difficult to scale reliably for our use case.</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">
+			We had to optimize for reliability.
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2>What we did...</h2>
+		<ul>
+			<li>Django auth service can be used by any other component in any other language.</li>
+			<li>Django models can be used by any other Python-based project.</li>
+			<li>Celery tasks can now be written in Go, and can be invoked from Python (and vice versa).</li>
+			<li>Async all the things (that we could).</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">Digging deeper into details...</h2>
 	</section>
 
 	<section class="slide">
@@ -273,21 +336,12 @@
 	</section>
 
 	<section class="slide">
-		<h2>Async all the things!</h2>
+		<h2>Let's do some Q &amp; A!</h2>
 		<ul>
-			<li>Celery is awesome. Use it.</li>
-			<li>Understand what your tasks need. Then optimize your worker hosts.</li>
-			<li>Adjust your worker concurrency depending on the tasks.</li>
-			<li>Know when you need to break out of Celery.</li>
+			<li>Follow me on @sanketsaurav</li>
+			<li>We're hiring developers at DoSelect in Bangalore.</li>
+			<li>Come talk to me about Django!</li>
 		</ul>
-	</section>
-
-	<section class="slide">
-		<h2 class="shout shrink">SLAs are important. Optimize for certainty.</h2>
-	</section>
-
-	<section class="slide">
-		<h2 class="shout shrink">Questions?</h2>
 	</section>
 
 	<div class="progress"></div>
